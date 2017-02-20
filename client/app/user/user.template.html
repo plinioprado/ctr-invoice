@@ -1,0 +1,31 @@
+<div class="container">
+
+   <nav>
+      <button class="btn btn-default pull-right" ng-click="$ctrl.ins()">{{$ctrl.txt[$ctrl.lang].insert}}</button>
+      <input class="form-control search" type="text" size="20" placeholder="{{$ctrl.txt[$ctrl.lang].search}}" ng-model="$ctrl.searchText">
+   </nav>
+
+   <h2>{{$ctrl.txt[$ctrl.lang].users}}</h2>
+
+   <table class="table">
+      <thead>
+         <tr>
+            <th><a href="" ng-click="$ctrl.sortData('email')">Email</a> <div class="arrow" ng-class="$ctrl.getSortClass('email')"></div></th>
+            <th><a href="" ng-click="$ctrl.sortData('name, email')">{{$ctrl.txt[$ctrl.lang].name}}</a> <div class="arrow" ng-class="$ctrl.getSortClass('name, email')"></th>
+            <th><a href="" ng-click="$ctrl.sortData('std,email')">{{$ctrl.txt[$ctrl.lang].std}}</a> <div class="arrow" ng-class="$ctrl.getSortClass('std,email')"></th>
+            <th><a href="" ng-click="$ctrl.sortData('active,email')">{{$ctrl.txt[$ctrl.lang].active}}</a> <div class="arrow" ng-class="$ctrl.getSortClass('active,email')"></th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr ng-repeat="item in $ctrl.list | filter:$ctrl.searchText | orderBy:$ctrl.sortCol:$ctrl.reverseSort">
+            <td><a href="#!/user/{{item._id}}">{{item.email}}</a></td>
+            <td>{{item.name}}</td>
+            <td>{{item.std}}</td>
+            <td>{{item.active ? $ctrl.txt[$ctrl.lang].yes : $ctrl.txt[$ctrl.lang].no}}</td>
+         </tr>
+      </tbody>
+   </table>
+
+   <p class="msg">{{$ctrl.msg}}</p>
+
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+
+    <form name="form" novalidate>
+
+      <nav>
+         <button class="btn btn-default pull-right" ng-click="$ctrl.rw=true" ng-show="!$ctrl.rw">{{$ctrl.txt[$ctrl.lang].edit}}</button>
+      </nav>
+
+      <h2>Config</h2>
+
+      <h3>{{$ctrl.txt[$ctrl.lang].entity}}</h3>
+
+      <div class="row">
+         <div class="col-xs-12 col-sm-6">
+            <label>Cnpj/Cpf</label>
+            <input class="form-control" maxlength="15" ng-model="$ctrl.data.entity.cod" ng-disabled="!$ctrl.rw" type="text">
+         </div>
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].name}}</label>
+            <input class="form-control" maxlength="40" ng-model="$ctrl.data.entity.name" ng-disabled="!$ctrl.rw" type="text">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].shortName}}</label>
+            <input class="form-control" maxlength="15" ng-model="$ctrl.data.entity.shortname" ng-disabled="!$ctrl.rw" type="text">
+         </div>
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].language}}</label>
+            <select class="form-control" ng-model="$ctrl.lang" ng-disabled="!$ctrl.rw">
+               <option value="en">English</option>
+               <option value="pt">Português</option>
+            </select>
+         </div>
+      </div>
+
+      <hr>
+
+      <h3>{{$ctrl.txt[$ctrl.lang].user}}</h3>
+
+      <div class="row">
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].name}}</label>
+            <input class="form-control" type="text" ng-model="$ctrl.data.user.name" ng-disabled="true">
+         </div>
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].std}}</label>
+            <input class="form-control" type="text" ng-model="$ctrl.data.user.std" ng-disabled="true">
+         </div>
+      </div>
+
+      <nav>
+         <span class="submitMsg">{{$ctrl.msg}}</span>
+         <button type="submit" class="btn btn-default" ng-click="$ctrl.submit()" ng-show="$ctrl.rw">Ok</button>
+      </nav>
+
+    </form>
+
+</div>

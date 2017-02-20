@@ -1,0 +1,62 @@
+<div class="container">
+    
+   <h2>{{$ctrl.txt[$ctrl.lang].invoices}}</h2>
+
+   <form name="form" class="navbar-form">
+        
+      <uibdatepicker dt="$ctrl.dt0"></uibdatepicker>
+      <uibdatepicker dt="$ctrl.dtn"></uibdatepicker>
+  
+      <input class="form-control" type="text" size="20" placeholder="Busca" ng-model="$ctrl.searchText" ng-change="$ctrl.calc()"> {{$ctrl.txt[$ctrl.lang].in}}
+      <select class="form-control" ng-model="$ctrl.searchCol" ng-change=" $ctrl.dataGet(); $ctrl.calc();">
+         <option value="">{{$ctrl.txt[$ctrl.lang].all}}</option>
+         <option value="cod">Cod</option>
+         <option value="cpcod">Cnpj/Cpf</option>
+         <option value="cpname">{{$ctrl.txt[$ctrl.lang].customer}}</option>
+         <option value="dt">{{$ctrl.txt[$ctrl.lang].date}}</option>
+         <option value="val">{{$ctrl.txt[$ctrl.lang].value}}</option>
+      </select>
+
+      <div class="form-group pull-right">
+         <button class="btn btn-default" ng-click="$ctrl.ins()">{{$ctrl.txt[$ctrl.lang].insert}}</button>
+      </div>
+
+   </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="10%" ng-click="$ctrl.sortData('cod')">Doc <div ng-class="$ctrl.sortGetClass('cod')"></th>
+                <th width="10%" ng-click="$ctrl.sortData('cp.cod')">Cnpj/Cpf <div ng-class="$ctrl.sortGetClass('cp.cod')"></th>
+                <th ng-click="$ctrl.sortData('cp.name')">{{$ctrl.txt[$ctrl.lang].customer}} <div ng-class="$ctrl.sortGetClass('cp.name')"></th>
+                <th width="1%" ng-click="$ctrl.sortData('dt')">{{$ctrl.txt[$ctrl.lang].date}} <div ng-class="$ctrl.sortGetClass('dt')"></th>
+                <th width="15%" ng-click="$ctrl.sortData('val')">{{$ctrl.txt[$ctrl.lang].value}} <div ng-class="$ctrl.sortGetClass('val')"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in $ctrl.list | filter:$ctrl.search | orderBy:$ctrl.sortCol:$ctrl.reverseSort">
+                <td><a href="#!/recins/{{item.cod}}">{{item.cod}}</a></td>
+                <td>{{item.cp.cod}}</td>
+                <td>{{item.cp.name}}</td>
+                <td>{{item.dt | date:'dd/MM/yy' }}</td>
+                <td class="val">{{item.val | number:2 }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">Total</td>
+                <td class="val">{{$ctrl.totVal() | number:2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="msg" ng-show="$ctrl.msg">{{$ctrl.msg}}</p>
+
+    <style>
+        .table tbody tr td:nth-child(1) {
+            white-space: nowrap;
+        }
+        .table tbody tr td:nth-child(5) {
+            text-align: right;
+        }
+    </style>
+</div>
+

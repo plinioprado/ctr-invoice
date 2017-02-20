@@ -1,0 +1,179 @@
+<div class="container">
+<nav>
+   <button class="btn btn-default pull-right" ng-click="$ctrl.back()">{{$ctrl.txt[$ctrl.lang].back}}</button>    
+   <button class="btn btn-default" ng-click="$ctrl.dataDelete()" ng-show="!$ctrl.ro && !$ctrl.new">{{$ctrl.txt[$ctrl.lang].delete}}</button>
+   <button class="btn btn-default" ng-click="$ctrl.edit()" ng-show="$ctrl.ro">{{$ctrl.txt[$ctrl.lang].edit}}</button>
+</nav>
+
+<form name="form" novalidate>
+ 
+    <h2>{{$ctrl.txt[$ctrl.lang].invoice}}</h2>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <label for="cod">Cod:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && form.cod.$invalid">
+                       <span ng-show="form.cod.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="form.cod.$error.minlength">{{$ctrl.txt[$ctrl.lang].less3}}</span>
+                       <span ng-show="!form.cod.$error.required && !form.cod.$error.minlength">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <input type="text" class="form-control" minlength="3" maxlength="15" name="cod" ng-class="{ invalid: $ctrl.submitted && form.cod.$invalid }" ng-disabled="$ctrl.ro || !$ctrl.new" ng-model="$ctrl.data.cod" required>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <label for="dt">{{$ctrl.txt[$ctrl.lang].date}}:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && form.dt.$invalid">
+                       <span ng-show="form.dt.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="!form.dt.$error.required">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <!--<uibdatepicker dt="$ctrl.data.dt"></uibdatepicker>-->
+                    <input class="form-control" maxlength="10" name="dt" ng-disabled="$ctrl.ro" ng-focus="$ctrl.onDtFocus()" ng-change="$ctrl.onDtChange()" ng-class="{ invalid: $ctrl.submitted && form.dt.$invalid }" ng-model="$ctrl.strDt" required type="text">
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <label for="val">{{$ctrl.txt[$ctrl.lang].value}}:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && (form.val.$invalid || $ctrl.strVal == '0,00')">
+                       <span ng-show="$ctrl.strVal == '0,00'">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="form.val.$error && $ctrl.strVal != '0,00'">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <input class="form-control val" name="val" ng-class="{ invalid: $ctrl.submitted && (form.val.$invalid || $ctrl.strVal == '0,00') }" ng-disabled="$ctrl.ro" ng-model="$ctrl.strVal" maxlength="14" ng-focus="$ctrl.onValFocus()" ng-change="$ctrl.onValChange($ctrl.strVal)" ng-blur="$ctrl.onValBlur()" required type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <label for="cpcod">Cnpj/Cpf:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && form.cpcod.$invalid">
+                       <span ng-show="form.cpcod.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="!form.cpcod.$error.required">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <input class="form-control" minlength="3" maxlength="15" name="cpcod" ng-class="{ invalid: $ctrl.submitted && form.cpcod.$invalid }" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.cod" required type="text">
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <label for="cpname">{{$ctrl.txt[$ctrl.lang].name}}:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && form.cpname.$invalid">
+                       <span ng-show="form.cpname.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="!form.cpname.$error.required">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <input class="form-control" maxlength="30" name="cpname" ng-class="{ invalid: $ctrl.submitted && form.cpname.$invalid }" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.name" required type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    <label for="addressAddr">{{$ctrl.txt[$ctrl.lang].addressAddr}}:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && form.addressAddr.$invalid">
+                       <span ng-show="form.addressAddr.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="!form.addressAddr.$error.required">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <input class="form-control" maxlength="30" name="addressAddr" ng-class="{ invalid: $ctrl.submitted && form.addressAddr.$invalid }" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.address.addr" required type="text">
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <label for="addressNeigh">{{$ctrl.txt[$ctrl.lang].addressNeigh}}:</label>
+                    <input class="form-control" maxlength="15" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.address.neigh" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <label for="addressZip">{{$ctrl.txt[$ctrl.lang].addressZip}}:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && form.addressZip.$invalid">
+                       <span ng-show="form.addressZip.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="form.addressZip.$error.minlength">{{$ctrl.txt[$ctrl.lang].less8}}</span>
+                       <span ng-show="!form.addressZip.$error.required && !form.addressZip.$error.minlength">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <input class="form-control" minlength="8" maxlength="8" name="addressZip" ng-class="{ invalid: $ctrl.submitted && form.addressZip.$invalid }" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.address.zip" required type="text">
+                </div>
+                <div class="col-xs-12 col-sm-5">
+                    <label for="addressCity">{{$ctrl.txt[$ctrl.lang].addressCity}}:</label>
+                    <div class="inputMsg" ng-show="$ctrl.submitted && form.addressZip.$invalid">
+                       <span ng-show="form.addressCity.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+                       <span ng-show="!form.addressCity.$error.required">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+                    </div>
+                    <div class="input-group-city">
+                    <input class="form-control" maxlength="15" name="addressCity" ng-class="{ invalid: $ctrl.submitted && form.addressCity.$invalid }" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.address.city" required type="text"> /
+                    <!--<input type="text" class="form-control" maxlength="2" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.address.state">-->
+                    <select class="form-control" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.cp.address.state">
+                        <option ng-repeat="stateValue in $ctrl.tables[$ctrl.lang].addrStateList" value="{{stateValue}}">{{stateValue}}</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <label for="std">{{$ctrl.txt[$ctrl.lang].std}}:</label>
+                    <select class="form-control" ng-disabled="$ctrl.ro" ng-model="$ctrl.data.std">
+                        <option ng-repeat="(stdKey, stdValue) in $ctrl.tables[$ctrl.lang].recinsStdList" value="{{stdKey}}">{{stdKey | uppercase}} - {{stdValue}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="doctxt">{{$ctrl.txt[$ctrl.lang].text}}:</label>
+                    <textarea ng-model="$ctrl.data.txt" ng-maxlength="1024" ng-disabled="$ctrl.ro" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-4">
+        
+            <table class="table" style="width: 30%">
+                <thead>
+                    <tr>
+                        <td colspan="3" align="right">
+                            &nbsp;
+                          <button class="btn btn-default btn-sm pull-right" ng-click="$ctrl.itemAdd()" ng-show="!$ctrl.ro && !$ctrl.recEditSeq">{{$ctrl.txt[$ctrl.lang].add}}</button>
+                            <button class="btn btn-default btn-sm pull-right" ng-click="$ctrl.itemDel()" ng-show="!$ctrl.recEditSeq && $ctrl.data.recList.length > 1">{{$ctrl.txt[$ctrl.lang].subLast}}</button>
+                            <button class="btn btn-default btn-sm pull-right" ng-click="($ctrl.recEditSeq = 0)" ng-show="$ctrl.recEditSeq">Ok</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th width="20%">{{$ctrl.txt[$ctrl.lang].rec}}</th>
+                        <th width="20%">{{$ctrl.txt[$ctrl.lang].dtDue}}</th>
+                        <th>{{$ctrl.txt[$ctrl.lang].value}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in $ctrl.data.recList">
+                        <td><a href  ng-click="($ctrl.recEditSeq = item.seq)">{{$ctrl.data.cod}}.{{item.seq}}</a></td>
+                        <td>
+                        <input class="itemInput" ng-class="{ itemInputEdit: $ctrl.recEditSeq == item.seq }" type="text" ng-model="item.dtDueStr" ng-disabled="($ctrl.recEditSeq != item.seq)" ng-focus="$ctrl.onItemDtFocus(item)" ng-change="$ctrl.onItemDtChange(item)">
+                        </td>
+                        <td>
+                        <input class="itemInput val" ng-class="{ itemInputEdit: $ctrl.recEditSeq == item.seq }" type="text" ng-model="item.valStr" ng-disabled="($ctrl.recEditSeq != item.seq)" ng-focus="$ctrl.onItemValFocus(item)" ng-change="$ctrl.onItemValChange(item)" ng-blur="$ctrl.onItemValBlur(item)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <td class="val">{{$ctrl.totRec() | number:2}}</td>
+                    </tr>
+                    <tr class="err" ng-show="$ctrl.data.val != $ctrl.totSeq">
+                        <td colspan="2" align="right">Dif.:</td>
+                        <td class="val">{{$ctrl.data.val - $ctrl.totRec() | number:2}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    
+    <nav>
+        <button class="btn btn-default pull-right" ng-show="$ctrl.showOk" ng-disabled="($ctrl.data.val != $ctrl.totSeq) && false" ng-click="$ctrl.ok()">Ok</button>
+        <p class="msg pull-right" ng-show="$ctrl.msg">{{$ctrl.msg}}</p>
+    </nav>
+
+</form>
+
+</div>
+
+<style>
+    .itemInput {
+        margin: 0;
+        padding: 0;
+        border-width: 1px;
+        border-color: transparent;
+        border-radius: 4px;
+        width: 100%;
+        min-width: 90px;
+        background-color: #fff;
+    }
+    .itemInputEdit {
+        border-color: #ccc;
+    }
+</style>

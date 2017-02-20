@@ -1,0 +1,86 @@
+<div class="container">
+
+   <form name="form" novalidate>
+      <nav>
+         <button class="btn btn-default pull-right" ng-show="!$ctrl.edit && $ctrl.data._id" ng-click="$ctrl.edit=true">{{$ctrl.txt[$ctrl.lang].edit}}</button>
+         <button class="btn btn-default pull-right" ng-show="$ctrl.edit && $ctrl.data._id" ng-click="$ctrl.dataDelete()">{{$ctrl.txt[$ctrl.lang].delete}}</button>
+         <button class="btn btn-default pull-right" ng-click="$ctrl.back()">{{$ctrl.txt[$ctrl.lang].back}}</button>
+      </nav>
+
+      <h2>{{$ctrl.txt[$ctrl.lang].user}}</h2>
+
+      <div class="row">
+         <div class="col-xs-12 col-sm-6">
+            <label>Email</label>
+            <div class="inputMsg" ng-show="$ctrl.submitted && form.email.$invalid">
+               <span ng-show="form.email.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+               <span ng-show="form.email.$error.email">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+            </div>
+            <input name="email" type="email" class="form-control" ng-class="{ invalid: $ctrl.submitted && form.email.$invalid }" required ng-model="$ctrl.data.email" ng-disabled="!$ctrl.edit" ng-click="$ctrl.submitMsg=''">
+
+         </div>
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].name}}</label>
+            <div class="inputMsg" ng-show="$ctrl.submitted && form.name.$invalid">
+               <span ng-show="form.name.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+               <span ng-show="form.name.$error.minlength">{{$ctrl.txt[$ctrl.lang].less3}}</span>
+               <span ng-show="!form.name.$error.required && !form.name.$error.minlength">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+            </div>
+            <input name="name" type="text" class="form-control" ng-model="$ctrl.data.name" ng-class="{ invalid: $ctrl.submitted && form.name.$invalid }" required minlength="3" ng-click="$ctrl.submitMsg=''" ng-disabled="!$ctrl.edit">
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].pass}}</label>
+            <div class="inputMsg" ng-show="$ctrl.submitted && form.pass.$invalid">
+               <span ng-show="form.pass.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+               <span ng-show="form.pass.$error.minlength">{{$ctrl.txt[$ctrl.lang].less6}}</span>
+               <span ng-show="!form.pass.$error.required && !form.pass.$error.minlength">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+            </div>
+            <input name="pass" type="password" class="form-control" ng-class="{ invalid: $ctrl.submitted && form.pass.$invalid }" required minlength="6" ng-model="$ctrl.data.pass" ng-disabled="!$ctrl.edit" ng-click="$ctrl.submitMsg=''">
+         </div>
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].fullName}}</label>
+            <div class="inputMsg" ng-show="$ctrl.submitted && form.fullname.$invalid">
+               <span ng-show="form.fullname.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
+               <span ng-show="form.fullname.$error.minlength">{{$ctrl.txt[$ctrl.lang].less3}}</span>
+               <span ng-show="!form.fullname.$error.required && !form.name.$error.minlength">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+            </div>
+            <input name="fullname" type="text" class="form-control" ng-model="$ctrl.data.fullname" ng-class="{ invalid: $ctrl.submitted && form.fullname.$invalid }" required minlength="3" ng-click="$ctrl.submitMsg=''" ng-disabled="!$ctrl.edit">
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-sm-6">
+         <label for="cc">{{$ctrl.txt[$ctrl.lang].std}}:</label>
+         <select class="form-control" ng-disabled="!$ctrl.edit" ng-model="$ctrl.data.std" name="std">
+            <option value="super">Super</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+         </select>
+         </div>
+         <div class="col-xs-12 col-sm-6">
+            <label>{{$ctrl.txt[$ctrl.lang].active}}</label>
+            <select class="form-control" ng-model="$ctrl.dataActive" ng-disabled="!$ctrl.edit" ng-change="$ctrl.onDataActiveChange()">
+               <option value="true">{{$ctrl.txt[$ctrl.lang].yes}}</option>
+               <option value="false">{{$ctrl.txt[$ctrl.lang].no}}</option>
+            </select>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-sm-6">
+            <br>
+            Id: {{$ctrl.dataId}}
+         </div>
+         <div class="col-xs-12 col-sm-6">
+            &nbsp;
+         </div>
+      </div>
+      <nav>
+         <button type="submit" class="btn btn-default" ng-click="$ctrl.dataSubmit()" ng-show="$ctrl.edit">Ok</button>
+      </nav>
+
+      <p class="msg" ng-show="$ctrl.msg">{{$ctrl.msg}}&nbsp;</p>
+
+   </form>
+
+</div>
