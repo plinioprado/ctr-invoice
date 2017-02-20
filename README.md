@@ -11,15 +11,16 @@ The bilingual (Portuguese/English) application controls:
 * Login (suggesting a demo company)
 * Users
 * Invoices
-* Config
+* Config (language selected here)
 
 ### Stack
 
 Frontend
 
 * AngularJs
-* Jquery
+* angular-ui-bootstrap
 * Bootsrap
+* Jquery
 
 Backend
 
@@ -55,7 +56,7 @@ localhost:3000/api/install
 
 ### Run the application
 ```shell
-localhost:3000/
+localhost:3000
 ```
 
 ### Configuration
@@ -63,6 +64,7 @@ In the file config.json:
 
 * serverPort, default: 3000
 * mongooseConnectionString, default: 'mongodb://localhost/exemplo'
+* token, defult '123321'
 
 ## Tests
 -----------
@@ -75,4 +77,4 @@ In the file config.json:
 ## Who do I talk to? ##
 
 * Plinio Prado
-* plinio.prado@immaginare.com.br
+   plinio.prado@immaginare.com.br

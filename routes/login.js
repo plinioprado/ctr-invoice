@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router()
 
+var cn = require('../config.json');
 var Cnf = require('../models/cnf');
 var User = require('../models/user');
 
@@ -42,7 +43,7 @@ router.post('/', function(req, res) {
             name: user.name,
             std: user.std
          };
-         session.token = '1';
+         session.token = cn.token;
          res.status(200).json(session);  
       }
    });
