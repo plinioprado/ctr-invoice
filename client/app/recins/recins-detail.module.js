@@ -5,7 +5,8 @@
       .module('recinsDetail', [])
       .component('recinsDetail', {
          templateUrl: 'app/recins/recins-detail.template.html',
-         controller: RecInsDetailController
+         controller: RecInsDetailController,
+         controllerAs: 'vm'
       });
 
    RecInsDetailController.$inject = ['$routeParams', '$rootScope', '$scope', '$location', '$filter', 'baseService', 'dataService'];
@@ -20,6 +21,7 @@
 
       vm.config = {};
       vm.data = {};
+      vm.dateFormat;
       vm.itemEditSeq = 0;
       vm.msg = '';
       vm.new;
@@ -125,7 +127,8 @@
       function activate() {
          try {
             vm.config = baseService.configGet();
-            vm.tables = baseService.tablesGet();            
+            vm.tables = baseService.tablesGet();  
+            vm.dateFormat = $rootScope.lang == 'en' ? 'MM/dd/yy' : 'dd/MM/yy';          
          } catch(err) {
             vm.msg = err;
          }
@@ -141,7 +144,7 @@
 
          for (var key in vm.data.recList) {
             vm.data.recList[key].seq = Number(key)+1;
-            vm.data.recList[key].dtDueStr = $filter('date')(vm.data.recList[key].dtDue, 'dd/MM/yyyy', 'UTC');
+            vm.data.recList[key].dtDueStr = $filter('date')(vm.data.recList[key].dtDue, vm.dateFormat, 'UTC');
             vm.data.recList[key].valStr = $filter('number')(vm.data.recList[key].val, 2);
          }
       }
@@ -280,7 +283,11 @@
             item.dtDueStr = vm.strDtOld;
          } else {
             vm.strDtOld = item.dtDueStr;
-            item.dtDue = item.dtDueStr.substr(6,4)+'-'+item.dtDueStr.substr(3,2)+'-'+item.dtDueStr.substr(0,2);
+            if ($rootScope.lang == 'pt') {
+               item.dtDue = item.dtDueStr.substr(6,4)+'-'+item.dtDueStr.substr(3,2)+'-'+item.dtDueStr.substr(0,2); 
+            } else {
+               item.dtDue = item.dtDueStr.substr(3,2)+'-'+item.dtDueStr.substr(6,4)+'-'+item.dtDueStr.substr(0,2);                
+            }
          }
       }
 
@@ -330,61 +337,82 @@
       }
 
       function testDtStr(str) {
-         if (!str) {
-            return true;
-         } else if (str.length == 0) {
-            return true;
-         } else if (str.length == 1) {
-            if(!/[0-3]/.test(str)) return false;
-            return true;
-         } else if (str.length == 2) {
-            if(!/[0-3][0-9]/.test(str)) return false;
-            if (Number(str) > 31) return false;
-            return true;
-         } else if (str.length == 3) {
-            if(!/[0-3][0-9]\//.test(str)) return false;
-            if (Number(str.substr(0,2)) > 31) return false;
-            return true;
-         } else if (str.length == 4) {
-            if(!/[0-3][0-9]\/[0-1]/.test(str)) return false;
-            if (Number(str.substr(0,2)) > 31) return false;
-            return true;
-         } else if (str.length == 5) {
-            if(!/[0-3][0-9]\/[0-1][0-9]/.test(str)) return false;
-            if (Number(str.substr(0,2)) > 31) return false;
-            if (Number(str.substr(3,2)) > 12) return false;
-            return true;
-         } else if (str.length == 6) {
-            if(!/[0-3][0-9]\/[0-1][0-9]\//.test(str)) return false;
-            if (Number(str.substr(0,2)) > 31) return false;
-            if (Number(str.substr(3,2)) > 12) return false;
-            return true;
-         } else if (str.length == 7) {
-            if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2]/.test(str)) return false;
-            if (Number(str.substr(0,2)) > 31) return false;
-            if (Number(str.substr(3,2)) > 12) return false;
-            return true;
-         } else if (str.length == 8) {
-            if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9]/.test(str)) return false;
-            if (Number(str.substr(0,2)) > 31) return false;
-            if (Number(str.substr(3,2)) > 12) return false;
-            return true;
-         } else if (str.length == 9) {
-            if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9]/.test(str)) return false;
-            if (Number(str.substr(0,2)) > 31) return false;
-            if (Number(str.substr(3,2)) > 12) return false;
-            return true;
-         } else if (str.length == 10) {
-            try {
-               if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9][0-9]/.test(str)) return false;
-               var dt = new Date(Number(str.substr(6,4)), Number(str.substr(3,2)) - 1, Number(str.substr(0,2)), 0, 0, 0, 0);
-               if ($filter('date')(dt, 'dd/MM/yyyy') != str) return false;
+         if ($rootScope == 'pt') {
+            if (!str) {
                return true;
-            } catch(err) {
+            } else if (str.length == 0) {
+               return true;
+            } else if (str.length == 1) {
+               if(!/[0-3]/.test(str)) return false;
+               return true;
+            } else if (str.length == 2) {
+               if(!/[0-3][0-9]/.test(str)) return false;
+               if (Number(str) > 31) return false;
+               return true;
+            } else if (str.length == 3) {
+               if(!/[0-3][0-9]\//.test(str)) return false;
+               if (Number(str.substr(0,2)) > 31) return false;
+               return true;
+            } else if (str.length == 4) {
+               if(!/[0-3][0-9]\/[0-1]/.test(str)) return false;
+               if (Number(str.substr(0,2)) > 31) return false;
+               return true;
+            } else if (str.length == 5) {
+               if(!/[0-3][0-9]\/[0-1][0-9]/.test(str)) return false;
+               if (Number(str.substr(0,2)) > 31) return false;
+               if (Number(str.substr(3,2)) > 12) return false;
+               return true;
+            } else if (str.length == 6) {
+               if(!/[0-3][0-9]\/[0-1][0-9]\//.test(str)) return false;
+               if (Number(str.substr(0,2)) > 31) return false;
+               if (Number(str.substr(3,2)) > 12) return false;
+               return true;
+            } else if (str.length == 7) {
+               if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2]/.test(str)) return false;
+               if (Number(str.substr(0,2)) > 31) return false;
+               if (Number(str.substr(3,2)) > 12) return false;
+               return true;
+            } else if (str.length == 8) {
+               if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9]/.test(str)) return false;
+               if (Number(str.substr(0,2)) > 31) return false;
+               if (Number(str.substr(3,2)) > 12) return false;
+               return true;
+            } else if (str.length == 9) {
+               if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9]/.test(str)) return false;
+               if (Number(str.substr(0,2)) > 31) return false;
+               if (Number(str.substr(3,2)) > 12) return false;
+               return true;
+            } else if (str.length == 10) {
+               try {
+                  if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9][0-9]/.test(str)) return false;
+                  var dt = new Date(Number(str.substr(6,4)), Number(str.substr(3,2)) - 1, Number(str.substr(0,2)), 0, 0, 0, 0);
+                  if ($filter('date')(dt, 'dd/MM/yyyy', 'UTC') != str) return false;
+                  return true;
+               } catch(err) {
+                  return false;
+               }
+            } else {
                return false;
-            }
+            }            
          } else {
-            return false;
+            if (!str) {
+               return true;
+            } else if (str.length == 0) {
+               return true;
+            } else if (str.length > 0 && str.length < 10) {
+               return true;
+            } else if (str.length == 10) {
+               try {
+                  if(!/[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9][0-9]/.test(str)) return false;
+                  var dt = new Date(Number(str.substr(6,4)), Number(str.substr(3,2)) - 1, Number(str.substr(0,2)), 0, 0, 0, 0);
+                  if ($filter('date')(dt, 'MM/dd/yyyy', 'UTC') != str) return false;
+                  return true;
+               } catch(err) {
+                  return false;
+               }
+            } else {
+               return false;
+            }  
          }
       }
 

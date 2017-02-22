@@ -5,12 +5,13 @@
       .module('cnf', [])
       .component('cnf', {
          templateUrl: 'app/cnf/cnf.template.html',
-         controller: CnfController
+         controller: CnfController,
+         controllerAs: 'vm'
       });
 
-   CnfController.$inject = ['$rootScope', '$location', 'baseService'];
+   CnfController.$inject = ['$rootScope', '$location', 'baseService', 'tmhDynamicLocale'];
 
-   function CnfController($rootScope, $location, baseService) {
+   function CnfController($rootScope, $location, baseService, tmhDynamicLocale) {
 
       var vm = this;
 
@@ -56,6 +57,9 @@
       function submit() {
          vm.data.lang = vm.lang;
          $rootScope.lang = vm.lang;
+         var l = vm.lang == 'pt' ? 'pt-br' : 'en-us';
+         tmhDynamicLocale.set(l);
+         
          baseService.configSet(vm.data);
          $location.path('#!/');
       }

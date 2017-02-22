@@ -5,7 +5,8 @@
       .module('userDetail', [])
       .component('userDetail', {
          templateUrl: 'app/user/user-detail.template.html',
-         controller: UserDetailController
+         controller: UserDetailController,
+         controllerAs: 'vm'
       });
 
    UserDetailController.$inject = ['$location', '$routeParams','$rootScope', 'dataService'];

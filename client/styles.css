@@ -175,8 +175,6 @@ form nav {
     background-color: #FFF;
 }
 
-
-
 input {
      margin-bottom: 10px;
 }
@@ -230,6 +228,9 @@ input:focus.invalid {
     float: left;
 }
 
+textarea {
+    resize: none;
+}
 
 /* Table */
 

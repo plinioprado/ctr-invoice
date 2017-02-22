@@ -5,7 +5,8 @@
       .module('login', [])
       .component('login', {
          templateUrl: 'app/login/login.template.html',
-         controller: LoginController
+         controller: LoginController,
+         controllerAs: 'vm'
       });
 
    LoginController.$inject = ['$scope', '$rootScope', '$location', 'baseService', 'dataService'];

@@ -4,26 +4,26 @@
       <form name="form" novalidate>
          <div class="form-group">
             <label for="email">Login</label>
-            <div class="inputMsg" ng-show="$ctrl.submitted && form.email.$invalid">
-               <span ng-show="form.email.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
-               <span ng-show="form.email.$error.email">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+            <div class="inputMsg" ng-show="vm.submitted && form.email.$invalid">
+               <span ng-show="form.email.$error.required">{{vm.txt[vm.lang].empty}}</span>
+               <span ng-show="form.email.$error.email">{{vm.txt[vm.lang].invalid}}</span>
             </div>
-            <input name="email" type="email" class="form-control" ng-model="$ctrl.email" ng-class="{ invalid: $ctrl.submitted && form.email.$invalid }" required placeholder="{{$ctrl.txt[$ctrl.lang].typeEmail}}" ng-click="$ctrl.submitMsg=''" maxlength="128">
+            <input name="email" type="email" class="form-control" ng-model="vm.email" ng-class="{ invalid: vm.submitted && form.email.$invalid }" required placeholder="{{vm.txt[vm.lang].typeEmail}}" ng-click="vm.submitMsg=''" maxlength="128">
          </div>
          <div class="form-group">
-            <label for="pass">{{$ctrl.txt[$ctrl.lang].pass}}</label>
-            <div class="inputMsg" ng-show="$ctrl.submitted && form.pass.$invalid">
-               <span ng-show="form.pass.$error.required">{{$ctrl.txt[$ctrl.lang].empty}}</span>
-               <span ng-show="form.pass.$error.minlength">{{$ctrl.txt[$ctrl.lang].less6}}</span>
-               <span ng-show="!form.pass.$error.required && !form.pass.$error.minlength">{{$ctrl.txt[$ctrl.lang].invalid}}</span>
+            <label for="pass">{{vm.txt[vm.lang].pass}}</label>
+            <div class="inputMsg" ng-show="vm.submitted && form.pass.$invalid">
+               <span ng-show="form.pass.$error.required">{{vm.txt[vm.lang].empty}}</span>
+               <span ng-show="form.pass.$error.minlength">{{vm.txt[vm.lang].less6}}</span>
+               <span ng-show="!form.pass.$error.required && !form.pass.$error.minlength">{{vm.txt[vm.lang].invalid}}</span>
             </div>
-            <input name="pass" type="password" class="form-control" ng-model="$ctrl.pass" ng-class="{ invalid: $ctrl.submitted && form.pass.$invalid }" required minlength="6" placeholder="{{$ctrl.txt[$ctrl.lang].typePass}}" ng-click="$ctrl.msg=''">
+            <input name="pass" type="password" class="form-control" ng-model="vm.pass" ng-class="{ invalid: vm.submitted && form.pass.$invalid }" required minlength="6" placeholder="{{vm.txt[vm.lang].typePass}}" ng-click="vm.msg=''">
          </div>
          <nav>
-            <div class="submitMsg" ng-show="$ctrl.msg">
-               {{$ctrl.msg}}&nbsp;
+            <div class="submitMsg" ng-show="vm.msg">
+               {{vm.msg}}&nbsp;
             </div>
-            <button type="submit" class="btn btn-default" ng-click="$ctrl.ok()">Ok</button>
+            <button type="submit" class="btn btn-default" ng-click="vm.ok()">Ok</button>
          </nav>
       </form>
    </div>

@@ -3,32 +3,32 @@
     <form name="form" novalidate>
 
       <nav>
-         <button class="btn btn-default pull-right" ng-click="$ctrl.rw=true" ng-show="!$ctrl.rw">{{$ctrl.txt[$ctrl.lang].edit}}</button>
+         <button class="btn btn-default pull-right" ng-click="vm.rw=true" ng-show="!vm.rw">{{vm.txt[vm.lang].edit}}</button>
       </nav>
 
       <h2>Config</h2>
 
-      <h3>{{$ctrl.txt[$ctrl.lang].entity}}</h3>
+      <h3>{{vm.txt[vm.lang].entity}}</h3>
 
       <div class="row">
          <div class="col-xs-12 col-sm-6">
             <label>Cnpj/Cpf</label>
-            <input class="form-control" maxlength="15" ng-model="$ctrl.data.entity.cod" ng-disabled="!$ctrl.rw" type="text">
+            <input class="form-control" maxlength="15" ng-model="vm.data.entity.cod" ng-disabled="!vm.rw" type="text">
          </div>
          <div class="col-xs-12 col-sm-6">
-            <label>{{$ctrl.txt[$ctrl.lang].name}}</label>
-            <input class="form-control" maxlength="40" ng-model="$ctrl.data.entity.name" ng-disabled="!$ctrl.rw" type="text">
+            <label>{{vm.txt[vm.lang].name}}</label>
+            <input class="form-control" maxlength="40" ng-model="vm.data.entity.name" ng-disabled="!vm.rw" type="text">
          </div>
       </div>
 
       <div class="row">
          <div class="col-xs-12 col-sm-6">
-            <label>{{$ctrl.txt[$ctrl.lang].shortName}}</label>
-            <input class="form-control" maxlength="15" ng-model="$ctrl.data.entity.shortname" ng-disabled="!$ctrl.rw" type="text">
+            <label>{{vm.txt[vm.lang].shortName}}</label>
+            <input class="form-control" maxlength="15" ng-model="vm.data.entity.shortname" ng-disabled="!vm.rw" type="text">
          </div>
          <div class="col-xs-12 col-sm-6">
-            <label>{{$ctrl.txt[$ctrl.lang].language}}</label>
-            <select class="form-control" ng-model="$ctrl.lang" ng-disabled="!$ctrl.rw">
+            <label>{{vm.txt[vm.lang].language}}</label>
+            <select class="form-control" ng-model="vm.lang" ng-disabled="!vm.rw">
                <option value="en">English</option>
                <option value="pt">Português</option>
             </select>
@@ -37,22 +37,22 @@
 
       <hr>
 
-      <h3>{{$ctrl.txt[$ctrl.lang].user}}</h3>
+      <h3>{{vm.txt[vm.lang].user}}</h3>
 
       <div class="row">
          <div class="col-xs-12 col-sm-6">
-            <label>{{$ctrl.txt[$ctrl.lang].name}}</label>
-            <input class="form-control" type="text" ng-model="$ctrl.data.user.name" ng-disabled="true">
+            <label>{{vm.txt[vm.lang].name}}</label>
+            <input class="form-control" type="text" ng-model="vm.data.user.name" ng-disabled="true">
          </div>
          <div class="col-xs-12 col-sm-6">
-            <label>{{$ctrl.txt[$ctrl.lang].std}}</label>
-            <input class="form-control" type="text" ng-model="$ctrl.data.user.std" ng-disabled="true">
+            <label>{{vm.txt[vm.lang].std}}</label>
+            <input class="form-control" type="text" ng-model="vm.data.user.std" ng-disabled="true">
          </div>
       </div>
 
       <nav>
-         <span class="submitMsg">{{$ctrl.msg}}</span>
-         <button type="submit" class="btn btn-default" ng-click="$ctrl.submit()" ng-show="$ctrl.rw">Ok</button>
+         <span class="submitMsg">{{vm.msg}}</span>
+         <button type="submit" class="btn btn-default" ng-click="vm.submit()" ng-show="vm.rw">Ok</button>
       </nav>
 
     </form>

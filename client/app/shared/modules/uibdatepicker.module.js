@@ -6,8 +6,10 @@
       .component('uibdatepicker', {
          templateUrl: 'app/shared/modules/uibdatepicker.template.html',
          controller: UibDatepickerController,
+         controllerAs: 'vm',
          bindings: {
             dt: '=',
+            dtf: '='
          }
       });
 
@@ -15,11 +17,10 @@
 
    function UibDatepickerController($scope, $filter) {
 
-//ng-model-options="{timezone: 'utc'}"
       var vm = this;
 
-      vm.dt;
       vm.isValid = isValid;
+      console.log(vm.dtf);
 
       function isValid() {
          return ($filter('date')(vm.dt, 'yyyy-MM-dd') != undefined);
@@ -49,9 +50,10 @@
 
       // Disable weekend selection
       function disabled(data) {
-         var date = data.date,
-         mode = data.mode;
-         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+         return false;
+         //var date = data.date,
+         //mode = data.mode;
+         //return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
       }
 
       $scope.toggleMin = function() {
@@ -68,7 +70,7 @@
          vm.dt = new Date(year, month, day);
       };
 
-      $scope.format = 'dd/MM/yyyy';
+      //$scope.format = 'dd/MM/yyyy';
 
       $scope.popup = {
          opened: false

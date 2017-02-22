@@ -22,6 +22,7 @@
     "angular-cookies": "^1.6.2",
     "angular-sanitize": "^1.6.2",
     "angular-bootstrap": "^2.5.0",
-    "angular-i18n": "^1.6.2"
+    "angular-i18n": "^1.6.2",
+    "angular-dynamic-locale": "^0.1.32"
   }
 }

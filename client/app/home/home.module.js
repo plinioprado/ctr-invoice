@@ -5,7 +5,8 @@
        .module('home', [])
        .component('home', {
           templateUrl: 'app/home/home.template.html',
-          controller: HomeController
+          controller: HomeController,
+          controllerAs: 'vm'
        });
 
    HomeController.$inject = ['$rootScope'];
@@ -19,6 +20,7 @@
       vm.lang;
       vm.txt = {
          'en': {
+            invoices: 'Invoices', 
             li1: 'Bilingual (en,pt)',
             p1: 'Prototype for tests and information exchange',
             
@@ -27,6 +29,7 @@
             users: 'Users'
          },
          'pt': {
+            invoices: 'Faturas', 
             li1: 'Bilingue (pt,en)',
             p1: 'Protótipo para testes e trocas de informação',
             

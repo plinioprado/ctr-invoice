@@ -8,6 +8,7 @@
          'ngCookies',
          'ui.bootstrap',
          'ui.bootstrap.datepickerPopup',
+         'tmh.dynamicLocale',
 
          'uibdatepicker',
          'cnf',
@@ -21,9 +22,9 @@
         ])
       .controller('ExController', ExController);
 
-   ExController.$inject = ['$scope', '$rootScope', '$cookies', '$location', 'baseService'];
+   ExController.$inject = ['$scope', '$rootScope', '$cookies', '$location', 'baseService', 'tmhDynamicLocale'];
 
-   function ExController($scope, $rootScope, $cookies, $location, baseService) {
+   function ExController($scope, $rootScope, $cookies, $location, baseService, tmhDynamicLocale) {
 
       var vm = this;
 
@@ -56,6 +57,7 @@
 
          if (!$rootScope.config) $rootScope.config = {};
          $rootScope.lang = ($cookies.get('lang') == 'en') ? 'en' : 'pt';
+         tmhDynamicLocale.set('pt-br');
          $rootScope.token = ( $cookies.get('token') || undefined);
          $rootScope.userName = ( $cookies.get('userName') || undefined);
          $rootScope.userStd = ( $cookies.get('userStd') || undefined);

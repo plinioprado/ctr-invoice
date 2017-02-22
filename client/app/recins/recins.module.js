@@ -5,7 +5,8 @@
       .module('recins', [])
       .component('recins', {
          templateUrl: 'app/recins/recins.template.html',
-         controller: RecInsController
+         controller: RecInsController,
+         controllerAs: 'vm'
          });
 
    RecInsController.$inject = ['$scope', '$rootScope', '$location', '$filter', 'dataService'];
@@ -20,6 +21,7 @@
 
       vm.dt0;
       vm.dtn;
+      vm.dateFormat;
       
       vm.list = [];
       vm.activated = false;
@@ -85,6 +87,7 @@
          var today = new Date();
          vm.dt0 = new Date(today.getFullYear()-1, 0, 1);
          vm.dtn = new Date(today.getFullYear()+1, 11, 0);
+         vm.dateFormat = $rootScope.lang == 'en' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
          vm.dataGet();
          vm.activated = true;
       }
@@ -93,8 +96,8 @@
 
          vm.list = [];
 
-         var dt0 = $filter('date')(vm.dt0, 'yyyy-MM-dd');
-         var dtn = $filter('date')(vm.dtn, 'yyyy-MM-dd');
+         var dt0 = $filter('date')(vm.dt0, 'yyyy-MM-dd', 'UTC');
+         var dtn = $filter('date')(vm.dtn, 'yyyy-MM-dd', 'UTC');
 
          if (!dt0 || !dtn) return;
 
@@ -128,7 +131,7 @@
 
       function search(item) {
 
-         var dt = $filter('date')(item.dt, 'yyyy-MM-dd');
+         var dt = $filter('date')(item.dt, 'yyyy-MM-dd', 'UTC');
 
          if (vm.searchText == '') {
             return true;
