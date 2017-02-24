@@ -24,7 +24,7 @@
 
       function tablesGet() {
          var tables = {
-            pt: {
+            'pt-br': {
                recinsStdList: {
                   nfs: 'NF.Serviços',
                   nfm: 'NF.Mercadoria',
@@ -40,7 +40,7 @@
                   'SE', 'TO', 
                   ]
                },
-            en: {
+            'en-us': {
                recinsStdList: {
                   nfs: 'Service invoice',
                   nfm: 'Produce invoice',
@@ -89,12 +89,12 @@
       function langGet() {
          
          var lang = $cookies.get('lang');
-         if (lang != 'en') lang = 'pt';
+         if (lang != 'en-us') lang = 'pt-br';
          return lang;
       }
 
       function langSet(lang) {
-         if (lang != 'en') lang = 'pt';
+         if (lang != 'en-us') lang = 'pt-br';
          $cookies.put('lang', lang);
       }
 

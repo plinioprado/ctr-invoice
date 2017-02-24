@@ -29,18 +29,16 @@
       var vm = this;
 
       $rootScope.config = {};
-      $rootScope.lang = 'pt';
-
-      vm.menuUsers = $rootScope.lang == 'en' ?  'Users' : 'Usuários';
+      $rootScope.lang = 'pt-br';
 
       // Texts
 
       vm.txt = {
-         'en': {
+         'en-us': {
             menuInvoices: 'Invoices',
             menuUsers: 'Users',
          },
-         'pt': {
+         'pt-br': {
             menuInvoices: 'Faturas',
             menuUsers: 'Usuários',
          }
@@ -56,7 +54,7 @@
       function activate() {
 
          if (!$rootScope.config) $rootScope.config = {};
-         $rootScope.lang = ($cookies.get('lang') == 'en') ? 'en' : 'pt';
+         $rootScope.lang = ($cookies.get('lang') == 'en-us') ? 'en-us' : 'pt-br';
          tmhDynamicLocale.set('pt-br');
          $rootScope.token = ( $cookies.get('token') || undefined);
          $rootScope.userName = ( $cookies.get('userName') || undefined);

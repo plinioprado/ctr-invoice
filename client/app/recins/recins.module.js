@@ -17,6 +17,7 @@
 
       // Variables
 
+      vm.activated = false;
       vm.apiUrl = '/api/recins';
 
       vm.dt0;
@@ -24,9 +25,6 @@
       vm.dateFormat;
       
       vm.list = [];
-      vm.activated = false;
-
-      vm.totval = 0;
 
       vm.searchText = '';
       vm.searchCol = '';
@@ -39,7 +37,7 @@
 
       vm.lang = $rootScope.lang;
       vm.txt = {
-         'en': {
+         'en-us': {
             all: 'All',
             invoices: 'Invoices and revenues',
             customer: 'Customer',
@@ -48,7 +46,7 @@
             in: 'in',
             value: 'Value'
          },
-         'pt': {
+         'pt-br': {
             all: 'Todos',
             invoices: 'Faturas e receitas',
             customer: 'Cliente',
@@ -87,7 +85,7 @@
          var today = new Date();
          vm.dt0 = new Date(today.getFullYear()-1, 0, 1);
          vm.dtn = new Date(today.getFullYear()+1, 11, 0);
-         vm.dateFormat = $rootScope.lang == 'en' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
+         vm.dateFormat = $rootScope.lang == 'en-us' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
          vm.dataGet();
          vm.activated = true;
       }

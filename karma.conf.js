@@ -16,10 +16,13 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         './client/bower_components/angular/angular.js',
+        './client/bower_components/angular-animate/angular-animate.js',
         './client/bower_components/angular-cookies/angular-cookies.js',
         './client/bower_components/angular-route/angular-route.js',
+        './client/bower_components/angular-sanitize/angular-sanitize.js',
         './client/bower_components/angular-mocks/angular-mocks.js',
-        './client/bower_components/angular-locale-pt-br/angular-locale_pt-br.js',
+        './client/bower_components/angular-dynamic-locale/tmhDynamicLocale.min.js',
+        './client/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
         './client/**/*.module.js',
         './client/**/*.service.js',
         './client/**/*.spec.js'

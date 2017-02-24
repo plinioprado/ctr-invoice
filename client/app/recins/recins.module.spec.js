@@ -53,11 +53,12 @@ describe('Controller recins: ', function() {
       });
 
       it('total should match', function() {
+
          var tot = 0;
          for(i=0; i<controller.list.length; i++) {
             tot += controller.list[i].val;
          }
-         expect(tot).toBe(controller.totval);
+         expect(tot).toBe(controller.totVal());
       });
 
    });

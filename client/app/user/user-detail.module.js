@@ -31,7 +31,7 @@
 
       vm.lang = $rootScope.lang;
       vm.txt = {
-         'en': {
+         'en-us': {
             active: 'Active',
             back: 'Back',
             delete: 'Delete',
@@ -48,7 +48,7 @@
             user: 'User',
             yes: "Yes"
          },
-         'pt': {
+         'pt-br': {
             active: 'Ativo',
             back: 'Retornar',
             delete: 'Excluir',

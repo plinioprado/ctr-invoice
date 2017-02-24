@@ -9,7 +9,7 @@
          controllerAs: 'vm',
          bindings: {
             dt: '=',
-            dtf: '='
+            dtf: '<'
          }
       });
 
@@ -20,7 +20,10 @@
       var vm = this;
 
       vm.isValid = isValid;
-      console.log(vm.dtf);
+
+      this.$onInit = function() {
+         console.log('dt onInit:', vm.dt)
+      }
 
       function isValid() {
          return ($filter('date')(vm.dt, 'yyyy-MM-dd') != undefined);
@@ -41,20 +44,11 @@
       };
 
       $scope.dateOptions = {
-         dateDisabled: disabled,
          formatYear: 'yy',
          maxDate: new Date(2020, 12, 31),
          minDate: new Date(2000, 1, 1),
          startingDay: 1
       };
-
-      // Disable weekend selection
-      function disabled(data) {
-         return false;
-         //var date = data.date,
-         //mode = data.mode;
-         //return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-      }
 
       $scope.toggleMin = function() {
          $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();

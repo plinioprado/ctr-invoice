@@ -12,7 +12,7 @@ describe('Controller home:', function() {
    }));
 
    it('li1[pt] should be Bilingue', function() {
-      expect(controller.txt['pt'].li1).toBe('Bilingue (pt,en)');
+      expect(controller.txt['pt-br'].li1).toBe('Bilingue (pt,en)');
    });
 
    it('controller should exist', function() {

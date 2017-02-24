@@ -34,7 +34,7 @@ function config($locationProvider, $routeProvider) {
                    $location.path('/login');
                }
             }
-         },            
+         },
          template: '<recins></recins>'
       })
       .when('/recins/:cod', {
@@ -44,7 +44,7 @@ function config($locationProvider, $routeProvider) {
                   $location.path('/login');
                }
             }
-         },            
+         },
          template: '<recins-detail></recins-detail>'
       })
       .when('/test', {
@@ -52,7 +52,7 @@ function config($locationProvider, $routeProvider) {
             function($location, $rootScope) {
                if (!$rootScope.token) $location.path('/login');
             }
-         },            
+         },
          template: '<test></test>'
       })
       .when('/user', {

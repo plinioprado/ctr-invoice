@@ -28,7 +28,7 @@
                        <span ng-show="form.dt.$error.required">{{vm.txt[vm.lang].empty}}</span>
                        <span ng-show="!form.dt.$error.required">{{vm.txt[vm.lang].invalid}}</span>
                     </div>
-                    <!--<uibdatepicker dt="vm.data.dt"></uibdatepicker>-->
+                    <!--<uibdatepicker dt="vm.data.dt" dtf="vm.dateFormat"></uibdatepicker>- data.dt(controller): {{vm.data.dt}}-->
                     <input class="form-control" maxlength="10" name="dt" ng-disabled="vm.ro" ng-focus="vm.onDtFocus()" ng-change="vm.onDtChange()" ng-class="{ invalid: vm.submitted && form.dt.$invalid }" ng-model="vm.strDt" required type="text">
                 </div>
                 <div class="col-xs-12 col-sm-4">

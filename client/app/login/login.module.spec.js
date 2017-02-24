@@ -10,7 +10,7 @@ describe('Controller login:', function() {
             name: 'Exemplo Serviços Ltda.',
             shortname: 'Exemplo'
          },
-         lang: 'pt',
+         lang: 'pt-br',
          token: '1',
          user: {
             name: 'João',
@@ -53,8 +53,6 @@ describe('Controller login:', function() {
 
       var promise = controller.login()
          .then(function(result) {
-            console.log('resolved');
-            console.log(result);
             expect(result.data).toBe(loginMock.data);
          });
      

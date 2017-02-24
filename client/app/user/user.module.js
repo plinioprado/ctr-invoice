@@ -30,7 +30,7 @@
 
       vm.lang = $rootScope.lang;
       vm.txt = {
-         'en': {
+         'en-us': {
             active: 'Active',
             insert: 'Insert',
             name: 'Name',
@@ -40,7 +40,7 @@
             users: 'Users',
             yes: "Yes"
          },
-         'pt': {
+         'pt-br': {
             active: 'Ativo',
             insert: 'Incluir',
             name: 'Nome',

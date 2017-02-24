@@ -24,7 +24,7 @@
 
       vm.lang = $rootScope.lang;
       vm.txt = {
-         'en': {
+         'en-us': {
             edit: 'Edit',
             entity: 'Entity',
             language: 'Language',
@@ -33,7 +33,7 @@
             std: 'Type',
             user: 'User'
          },
-         'pt': {
+         'pt-br': {
             edit: 'Editar',
             entity: 'Entidade',
             language: 'Idioma',
@@ -57,7 +57,7 @@
       function submit() {
          vm.data.lang = vm.lang;
          $rootScope.lang = vm.lang;
-         var l = vm.lang == 'pt' ? 'pt-br' : 'en-us';
+         var l = vm.lang == 'pt-br' ? 'pt-br' : 'en-us';
          tmhDynamicLocale.set(l);
          
          baseService.configSet(vm.data);

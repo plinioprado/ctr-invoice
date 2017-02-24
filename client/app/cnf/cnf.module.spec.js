@@ -8,7 +8,7 @@ describe('controller cnf:', function() {
          name: 'Exemplo Serviços Ltda.',
          shortname: 'Exemplo'
       },
-      lang: 'pt',
+      lang: 'pt-br',
       token: '1',
       user: {
          name: 'João',

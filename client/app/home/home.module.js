@@ -19,7 +19,7 @@
 
       vm.lang;
       vm.txt = {
-         'en': {
+         'en-us': {
             invoices: 'Invoices', 
             li1: 'Bilingual (en,pt)',
             p1: 'Prototype for tests and information exchange',
@@ -28,7 +28,7 @@
             technologies: 'Technologies',
             users: 'Users'
          },
-         'pt': {
+         'pt-br': {
             invoices: 'Faturas', 
             li1: 'Bilingue (pt,en)',
             p1: 'Protótipo para testes e trocas de informação',
@@ -44,8 +44,6 @@
       function activate() {
          vm.lang = $rootScope.lang;
       }
-
-      vm.test = 'hey';
       
    }
 

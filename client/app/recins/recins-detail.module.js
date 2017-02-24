@@ -42,7 +42,7 @@
 
       vm.lang = $rootScope.lang;
       vm.txt = {
-         'en': {
+         'en-us': {
             add: 'add',
             addressAddr: 'Address',
             addressCity: 'City/State',
@@ -65,7 +65,7 @@
             text: 'Text',
             value: 'Value',
          },
-         'pt': {
+         'pt-br': {
             add: 'Adicionar',
             addressAddr: 'Endereço',
             addressCity: 'Municipio/Uf',
@@ -128,7 +128,7 @@
          try {
             vm.config = baseService.configGet();
             vm.tables = baseService.tablesGet();  
-            vm.dateFormat = $rootScope.lang == 'en' ? 'MM/dd/yy' : 'dd/MM/yy';          
+            vm.dateFormat = $rootScope.lang == 'en-us' ? 'MM/dd/yy' : 'dd/MM/yy';          
          } catch(err) {
             vm.msg = err;
          }
@@ -139,7 +139,7 @@
 
       function calc() {
 
-         vm.strDt = $filter('date')(vm.data.dt, 'dd/MM/yyyy', 'UTC');
+         vm.strDt = $filter('date')(vm.data.dt, vm.dateFormat, 'UTC');
          vm.strVal = $filter('number')(vm.data.val, 2);
 
          for (var key in vm.data.recList) {
@@ -270,7 +270,11 @@
             vm.strDt = vm.strDtOld;
          } else {
             vm.strDtOld = vm.strDt;
-            vm.data.dt = vm.strDt.substr(6,4)+'-'+vm.strDt.substr(3,2)+'-'+vm.strDt.substr(0,2);
+            if ($rootScope.lang == 'pt-br') {
+               item.dtDue = item.dtDueStr.substr(6,4)+'-'+item.dtDueStr.substr(3,2)+'-'+item.dtDueStr.substr(0,2); 
+            } else {
+               item.dtDue = item.dtDueStr.substr(3,2)+'-'+item.dtDueStr.substr(6,4)+'-'+item.dtDueStr.substr(0,2);                
+            }
          }
       }
 
@@ -283,7 +287,7 @@
             item.dtDueStr = vm.strDtOld;
          } else {
             vm.strDtOld = item.dtDueStr;
-            if ($rootScope.lang == 'pt') {
+            if ($rootScope.lang == 'pt-br') {
                item.dtDue = item.dtDueStr.substr(6,4)+'-'+item.dtDueStr.substr(3,2)+'-'+item.dtDueStr.substr(0,2); 
             } else {
                item.dtDue = item.dtDueStr.substr(3,2)+'-'+item.dtDueStr.substr(6,4)+'-'+item.dtDueStr.substr(0,2);                
@@ -337,7 +341,7 @@
       }
 
       function testDtStr(str) {
-         if ($rootScope == 'pt') {
+         if ($rootScope == 'pt-br') {
             if (!str) {
                return true;
             } else if (str.length == 0) {

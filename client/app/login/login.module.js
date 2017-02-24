@@ -25,7 +25,7 @@
 
       vm.lang = $rootScope.lang;
       vm.txt = {
-         'en': {
+         'en-us': {
             pass: 'Pass',
             empty: 'Empty',
             error400: 'Access error',
@@ -35,7 +35,7 @@
             typeEmail: 'Type your email',
             typePass: 'Type your pass'
          },
-         'pt': {
+         'pt-br': {
             pass: 'Senha',
             empty: 'Em branco',
             error400: 'Erro ao acessar',
