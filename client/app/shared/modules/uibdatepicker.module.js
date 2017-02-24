@@ -9,7 +9,8 @@
          controllerAs: 'vm',
          bindings: {
             dt: '=',
-            dtf: '<'
+            format: '<',
+            disabled: '='
          }
       });
 
@@ -20,10 +21,6 @@
       var vm = this;
 
       vm.isValid = isValid;
-
-      this.$onInit = function() {
-         console.log('dt onInit:', vm.dt)
-      }
 
       function isValid() {
          return ($filter('date')(vm.dt, 'yyyy-MM-dd') != undefined);
@@ -44,7 +41,7 @@
       };
 
       $scope.dateOptions = {
-         formatYear: 'yy',
+         formatYear: 'yyyy',
          maxDate: new Date(2020, 12, 31),
          minDate: new Date(2000, 1, 1),
          startingDay: 1

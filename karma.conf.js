@@ -23,6 +23,7 @@ module.exports = function(config) {
         './client/bower_components/angular-mocks/angular-mocks.js',
         './client/bower_components/angular-dynamic-locale/tmhDynamicLocale.min.js',
         './client/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+        './client/angular/i18n/*.js',
         './client/**/*.module.js',
         './client/**/*.service.js',
         './client/**/*.spec.js'

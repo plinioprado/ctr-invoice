@@ -4,11 +4,11 @@
 
    <form name="form" class="navbar-form">
         
-      <uibdatepicker dt="vm.dt0" dtf="vm.dateFormat"></uibdatepicker>
-      <uibdatepicker dt="vm.dtn" dtf="vm.dateFormat"></uibdatepicker>
+      <uibdatepicker dt="vm.dt0" format="vm.dateFormat"></uibdatepicker>
+      <uibdatepicker dt="vm.dtn" format="vm.dateFormat"></uibdatepicker>
   
       <input class="form-control" type="text" size="20" placeholder="Busca" ng-model="vm.searchText" ng-change="vm.calc()"> {{vm.txt[vm.lang].in}}
-      <select class="form-control" ng-model="vm.searchCol" ng-change=" vm.dataGet(); vm.calc();">
+      <select class="form-control" ng-model="vm.searchCol" ng-change=" vm.dataGet(); vm.calc()">
          <option value="">{{vm.txt[vm.lang].all}}</option>
          <option value="cod">Cod</option>
          <option value="cpcod">Cnpj/Cpf</option>

@@ -128,7 +128,7 @@
          try {
             vm.config = baseService.configGet();
             vm.tables = baseService.tablesGet();  
-            vm.dateFormat = $rootScope.lang == 'en-us' ? 'MM/dd/yy' : 'dd/MM/yy';          
+            vm.dateFormat = $rootScope.lang == 'en-us' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';          
          } catch(err) {
             vm.msg = err;
          }
@@ -139,7 +139,7 @@
 
       function calc() {
 
-         vm.strDt = $filter('date')(vm.data.dt, vm.dateFormat, 'UTC');
+         vm.data.dt = new Date(vm.data.dt);
          vm.strVal = $filter('number')(vm.data.val, 2);
 
          for (var key in vm.data.recList) {
