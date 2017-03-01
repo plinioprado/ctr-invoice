@@ -19,6 +19,16 @@ a:hover {
     color: #00804D;
 }
 
+a[disabled=disabled] {
+    text-decoration: none;
+    cursor: text;
+}
+
+a[disabled=disabled]:hover {
+    color: #000;
+}
+
+
 h2 {
     margin-top: 0;
     font-size: 18px;
@@ -166,6 +176,24 @@ nav button {
 
 /* Form */
 
+/*.dtp-sm .input-group .form-control {
+    background-color: yellow;
+    margin: 0;
+    padding: 0;
+}
+
+.dtp-sm .input-group .form-control:disabled {
+    background-color: yellow;
+    margin: 0;
+    padding: 0;
+}
+
+.dtp-sm .input-group .btn-default {
+    background-color: yellow;
+    margin: 0;
+    padding: 0;
+}*/
+
 form nav {
     margin-top: 20px;
     text-align: right;
@@ -216,12 +244,43 @@ input:focus.invalid {
     min-width: 65px;
 }
 
+
+.input-item {
+    min-width: 90px;
+    border-color: #ccc;
+}
+
+.input-item:disabled {
+    border-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
 .inputMsg {
     float: right;
     font-size: 16px;
     margin-right: 10px;
     color: #d9534f;
 }
+
+.input-invisible {
+    visibility: hidden;
+}
+
+/*.itemInput {
+    margin: 0;
+    padding: 0;
+    border-width: 1px;
+    border-color: transparent;
+    border-radius: 4px;
+    width: 100%;
+    min-width: 90px;
+    background-color: #fff;
+}
+.itemInputEdit {
+    border-color: #ccc;
+}*/
 
 .submitMsg {
     color: #d9534f;

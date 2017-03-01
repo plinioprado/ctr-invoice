@@ -1,178 +1,164 @@
 <div class="container">
-<nav>
-   <button class="btn btn-default pull-right" ng-click="vm.back()">{{vm.txt[vm.lang].back}}</button>    
-   <button class="btn btn-default" ng-click="vm.dataDelete()" ng-show="!vm.ro && !vm.new">{{vm.txt[vm.lang].delete}}</button>
-   <button class="btn btn-default" ng-click="vm.edit()" ng-show="vm.ro">{{vm.txt[vm.lang].edit}}</button>
-</nav>
 
-<form name="form" novalidate>
- 
-    <h2>{{vm.txt[vm.lang].invoice}}</h2>
+   <nav>
+      <button class="btn btn-default pull-right" ng-click="vm.back()">{{vm.txt[vm.lang].back}}</button>    
+      <button class="btn btn-default" ng-click="vm.dataDelete()" ng-show="!vm.ro && !vm.new">{{vm.txt[vm.lang].delete}}</button>
+      <button class="btn btn-default" ng-click="vm.edit()" ng-show="vm.ro">{{vm.txt[vm.lang].edit}}</button>
+   </nav>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-8">
+   <form name="form" novalidate>
+    
+      <h2>{{vm.txt[vm.lang].invoice}}</h2>
+
+      <div class="row">
+         <div class="col-xs-12 col-sm-8">
 
             <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <label for="cod">Cod:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && form.cod.$invalid">
-                       <span ng-show="form.cod.$error.required">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="form.cod.$error.minlength">{{vm.txt[vm.lang].less3}}</span>
-                       <span ng-show="!form.cod.$error.required && !form.cod.$error.minlength">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <input type="text" class="form-control" minlength="3" maxlength="15" name="cod" ng-class="{ invalid: vm.submitted && form.cod.$invalid }" ng-disabled="vm.ro || !vm.new" ng-model="vm.data.cod" required>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <label for="dt">{{vm.txt[vm.lang].date}}:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && form.dt.$invalid">
-                       <span ng-show="form.dt.$error.required">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="!form.dt.$error.required">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <uibdatepicker disabled="vm.ro" dt="vm.data.dt" format="vm.dateFormat"></uibdatepicker>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <label for="val">{{vm.txt[vm.lang].value}}:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && (form.val.$invalid || vm.strVal == '0,00')">
-                       <span ng-show="vm.strVal == '0,00'">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="form.val.$error && vm.strVal != '0,00'">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <input class="form-control val" name="val" ng-class="{ invalid: vm.submitted && (form.val.$invalid || vm.strVal == '0,00') }" ng-disabled="vm.ro" ng-model="vm.strVal" maxlength="14" ng-focus="vm.onValFocus()" ng-change="vm.onValChange(vm.strVal)" ng-blur="vm.onValBlur()" required type="text">
-                </div>
+               <div class="col-xs-12 col-sm-4">
+                  <label for="cod">Cod:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && form.cod.$invalid">
+                     <span ng-show="form.cod.$error.required">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="form.cod.$error.minlength">{{vm.txt[vm.lang].less3}}</span>
+                     <span ng-show="!form.cod.$error.required && !form.cod.$error.minlength">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <input type="text" class="form-control" minlength="3" maxlength="15" name="cod" ng-class="{ invalid: vm.submitted && form.cod.$invalid }" ng-disabled="vm.ro || !vm.new" ng-model="vm.data.cod" required>
+               </div>
+               <div class="col-xs-12 col-sm-4">
+                  <label for="dt">{{vm.txt[vm.lang].date}}:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && form.dt.$invalid">
+                     <span ng-show="form.dt.$error.required">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="!form.dt.$error.required">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <uibdatepicker disabled="vm.ro" dt="vm.data.dt" format="vm.dateFormat"></uibdatepicker>
+               </div>
+               <div class="col-xs-12 col-sm-4">
+                  <label for="val">{{vm.txt[vm.lang].value}}:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && (form.val.$invalid || vm.strVal == '0,00')">
+                     <span ng-show="vm.strVal == '0,00'">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="form.val.$error && vm.strVal != '0,00'">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <input class="form-control val" name="val" ng-class="{ invalid: vm.submitted && (form.val.$invalid || vm.strVal == '0,00') }" ng-disabled="vm.ro" ng-model="vm.strVal" maxlength="14" ng-focus="vm.onValFocus()" ng-change="vm.onValChange(vm.strVal)" ng-blur="vm.onValBlur()" required type="text">
+               </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <label for="cpcod">Cnpj/Cpf:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && form.cpcod.$invalid">
-                       <span ng-show="form.cpcod.$error.required">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="!form.cpcod.$error.required">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <input class="form-control" minlength="3" maxlength="15" name="cpcod" ng-class="{ invalid: vm.submitted && form.cpcod.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.cod" required type="text">
-                </div>
-                <div class="col-xs-12 col-sm-8">
-                    <label for="cpname">{{vm.txt[vm.lang].name}}:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && form.cpname.$invalid">
-                       <span ng-show="form.cpname.$error.required">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="!form.cpname.$error.required">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <input class="form-control" maxlength="30" name="cpname" ng-class="{ invalid: vm.submitted && form.cpname.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.name" required type="text">
-                </div>
+               <div class="col-xs-12 col-sm-4">
+                  <label for="cpcod">Cnpj/Cpf:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && form.cpcod.$invalid">
+                     <span ng-show="form.cpcod.$error.required">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="!form.cpcod.$error.required">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <input class="form-control" minlength="3" maxlength="15" name="cpcod" ng-class="{ invalid: vm.submitted && form.cpcod.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.cod" required type="text">
+               </div>
+               <div class="col-xs-12 col-sm-8">
+                  <label for="cpname">{{vm.txt[vm.lang].name}}:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && form.cpname.$invalid">
+                     <span ng-show="form.cpname.$error.required">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="!form.cpname.$error.required">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <input class="form-control" maxlength="30" name="cpname" ng-class="{ invalid: vm.submitted && form.cpname.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.name" required type="text">
+               </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-8">
-                    <label for="addressAddr">{{vm.txt[vm.lang].addressAddr}}:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && form.addressAddr.$invalid">
-                       <span ng-show="form.addressAddr.$error.required">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="!form.addressAddr.$error.required">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <input class="form-control" maxlength="30" name="addressAddr" ng-class="{ invalid: vm.submitted && form.addressAddr.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.address.addr" required type="text">
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <label for="addressNeigh">{{vm.txt[vm.lang].addressNeigh}}:</label>
-                    <input class="form-control" maxlength="15" ng-disabled="vm.ro" ng-model="vm.data.cp.address.neigh" type="text">
-                </div>
+               <div class="col-xs-12 col-sm-8">
+                  <label for="addressAddr">{{vm.txt[vm.lang].addressAddr}}:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && form.addressAddr.$invalid">
+                     <span ng-show="form.addressAddr.$error.required">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="!form.addressAddr.$error.required">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <input class="form-control" maxlength="30" name="addressAddr" ng-class="{ invalid: vm.submitted && form.addressAddr.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.address.addr" required type="text">
+               </div>
+               <div class="col-xs-12 col-sm-4">
+                  <label for="addressNeigh">{{vm.txt[vm.lang].addressNeigh}}:</label>
+                  <input class="form-control" maxlength="15" ng-disabled="vm.ro" ng-model="vm.data.cp.address.neigh" type="text">
+               </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-3">
-                    <label for="addressZip">{{vm.txt[vm.lang].addressZip}}:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && form.addressZip.$invalid">
-                       <span ng-show="form.addressZip.$error.required">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="form.addressZip.$error.minlength">{{vm.txt[vm.lang].less8}}</span>
-                       <span ng-show="!form.addressZip.$error.required && !form.addressZip.$error.minlength">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <input class="form-control" minlength="8" maxlength="8" name="addressZip" ng-class="{ invalid: vm.submitted && form.addressZip.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.address.zip" required type="text">
-                </div>
-                <div class="col-xs-12 col-sm-5">
-                    <label for="addressCity">{{vm.txt[vm.lang].addressCity}}:</label>
-                    <div class="inputMsg" ng-show="vm.submitted && form.addressZip.$invalid">
-                       <span ng-show="form.addressCity.$error.required">{{vm.txt[vm.lang].empty}}</span>
-                       <span ng-show="!form.addressCity.$error.required">{{vm.txt[vm.lang].invalid}}</span>
-                    </div>
-                    <div class="input-group-city">
-                    <input class="form-control" maxlength="15" name="addressCity" ng-class="{ invalid: vm.submitted && form.addressCity.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.address.city" required type="text"> /
-                    <!--<input type="text" class="form-control" maxlength="2" ng-disabled="vm.ro" ng-model="vm.data.cp.address.state">-->
-                    <select class="form-control" ng-disabled="vm.ro" ng-model="vm.data.cp.address.state">
+               <div class="col-xs-12 col-sm-3">
+                  <label for="addressZip">{{vm.txt[vm.lang].addressZip}}:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && form.addressZip.$invalid">
+                     <span ng-show="form.addressZip.$error.required">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="form.addressZip.$error.minlength">{{vm.txt[vm.lang].less8}}</span>
+                     <span ng-show="!form.addressZip.$error.required && !form.addressZip.$error.minlength">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <input class="form-control" minlength="8" maxlength="8" name="addressZip" ng-class="{ invalid: vm.submitted && form.addressZip.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.address.zip" required type="text">
+               </div>
+               <div class="col-xs-12 col-sm-5">
+                  <label for="addressCity">{{vm.txt[vm.lang].addressCity}}:</label>
+                  <div class="inputMsg" ng-show="vm.submitted && form.addressZip.$invalid">
+                     <span ng-show="form.addressCity.$error.required">{{vm.txt[vm.lang].empty}}</span>
+                     <span ng-show="!form.addressCity.$error.required">{{vm.txt[vm.lang].invalid}}</span>
+                  </div>
+                  <div class="input-group-city">
+                     <input class="form-control" maxlength="15" name="addressCity" ng-class="{ invalid: vm.submitted && form.addressCity.$invalid }" ng-disabled="vm.ro" ng-model="vm.data.cp.address.city" required type="text"> /
+                     <select class="form-control" ng-disabled="vm.ro" ng-model="vm.data.cp.address.state">
                         <option ng-repeat="stateValue in vm.tables[vm.lang].addrStateList" value="{{stateValue}}">{{stateValue}}</option>
-                    </select>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <label for="std">{{vm.txt[vm.lang].std}}:</label>
-                    <select class="form-control" ng-disabled="vm.ro" ng-model="vm.data.std">
-                        <option ng-repeat="(stdKey, stdValue) in vm.tables[vm.lang].recinsStdList" value="{{stdKey}}">{{stdKey | uppercase}} - {{stdValue}}</option>
-                    </select>
-                </div>
+                     </select>
+                  </div>
+               </div>
+               <div class="col-xs-12 col-sm-4">
+                  <label for="std">{{vm.txt[vm.lang].std}}:</label>
+                  <select class="form-control" ng-disabled="vm.ro" ng-model="vm.data.std">
+                     <option ng-repeat="(stdKey, stdValue) in vm.tables[vm.lang].recinsStdList" value="{{stdKey}}">{{stdKey | uppercase}} - {{stdValue}}</option>
+                  </select>
+               </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <label for="doctxt">{{vm.txt[vm.lang].text}}:</label>
-                    <textarea ng-model="vm.data.txt" ng-maxlength="1024" ng-disabled="vm.ro" class="form-control" rows="5"></textarea>
-                </div>
+               <div class="col-xs-12">
+                  <label for="doctxt">{{vm.txt[vm.lang].text}}:</label>
+                  <textarea ng-model="vm.data.txt" ng-maxlength="1024" ng-disabled="vm.ro" class="form-control" rows="5"></textarea>
+               </div>
             </div>
 
-        </div>
-        <div class="col-xs-12 col-sm-4">
-        
+         </div>
+         <div class="col-xs-12 col-sm-4">
+           
             <table class="table" style="width: 30%">
-                <thead>
-                    <tr>
-                        <td colspan="3" align="right">
-                            &nbsp;
-                          <button class="btn btn-default btn-sm pull-right" ng-click="vm.itemAdd()" ng-show="!vm.ro && !vm.recEditSeq">{{vm.txt[vm.lang].add}}</button>
-                            <button class="btn btn-default btn-sm pull-right" ng-click="vm.itemDel()" ng-show="!vm.recEditSeq && vm.data.recList.length > 1 && !vm.ro">{{vm.txt[vm.lang].subLast}}</button>
-                            <button class="btn btn-default btn-sm pull-right" ng-click="(vm.recEditSeq = 0)" ng-show="vm.recEditSeq">Ok</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th width="20%">{{vm.txt[vm.lang].rec}}</th>
-                        <th width="20%">{{vm.txt[vm.lang].dtDue}}</th>
-                        <th>{{vm.txt[vm.lang].value}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in vm.data.recList">
-                        <td><a href  ng-click="(vm.recEditSeq = item.seq)">{{vm.data.cod}}.{{item.seq}}</a></td>
-                        <td>
-                        <input class="itemInput" ng-class="{ itemInputEdit: vm.recEditSeq == item.seq }" type="text" ng-model="item.dtDueStr" ng-disabled="(vm.recEditSeq != item.seq)" ng-focus="vm.onItemDtFocus(item)" ng-change="vm.onItemDtChange(item)">
-                        </td>
-                        <td>
-                        <input class="itemInput val" ng-class="{ itemInputEdit: vm.recEditSeq == item.seq }" type="text" ng-model="item.valStr" ng-disabled="(vm.recEditSeq != item.seq)" ng-focus="vm.onItemValFocus(item)" ng-change="vm.onItemValChange(item)" ng-blur="vm.onItemValBlur(item)">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Total</td>
-                        <td class="val">{{vm.totRec() | number:2}}</td>
-                    </tr>
-                    <tr class="err" ng-show="vm.data.val != vm.totSeq">
-                        <td colspan="2" align="right">Dif.:</td>
-                        <td class="val">{{vm.data.val - vm.totRec() | number:2}}</td>
-                    </tr>
-                </tbody>
+               <thead>
+                  <tr>
+                     <th colspan="3" align="right">
+                        &nbsp;
+                        <button class="btn btn-default btn-sm pull-right" ng-click="vm.itemAdd()" ng-show="!vm.ro && !vm.recEditSeq">{{vm.txt[vm.lang].add}}</button>
+                        <button class="btn btn-default btn-sm pull-right" ng-click="vm.itemDel()" ng-show="!vm.recEditSeq && vm.data.recList.length > 1 && !vm.ro">{{vm.txt[vm.lang].subLast}}</button>
+                        <button class="btn btn-default btn-sm pull-right" ng-click="(vm.recEditSeq = 0)" ng-show="vm.recEditSeq">Ok</button>
+                     </th>
+                  </tr>
+                  <tr>
+                     <th width="20%">{{vm.txt[vm.lang].rec}}</th>
+                     <th width="20%">{{vm.txt[vm.lang].dtDue}}</th>
+                     <th>{{vm.txt[vm.lang].value}}</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="item in vm.data.recList">
+                     <td>
+                        <a href ng-click="vm.itemEdit(item.seq)" ng-disabled="vm.ro">{{vm.data.cod}}.{{item.seq}}</a>
+                     </td>
+                     <td>
+                        <uibdatepickermini disabled="(vm.ro || vm.recEditSeq != item.seq)" dt="item.dtDue" format="vm.dateFormat"></uibdatepickermini>
+                     </td>
+                     <td>
+                        <input class="form-control input-sm input-item val" type="text" ng-model="item.valStr" ng-disabled="(vm.recEditSeq != item.seq)" ng-focus="vm.onItemValFocus(item)" ng-change="vm.onItemValChange(item)" ng-blur="vm.onItemValBlur(item)">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">Total</td>
+                     <td class="val">{{vm.totRec() | number:2}}</td>
+                  </tr>
+                  <tr class="err" ng-show="vm.data.val != vm.totSeq">
+                     <td colspan="2" align="right">Dif.:</td>
+                     <td class="val">{{vm.data.val - vm.totRec() | number:2}}</td>
+                  </tr>
+               </tbody>
             </table>
 
-        </div>
-    </div>
-    
-    <nav>
-        <button class="btn btn-default pull-right" ng-show="vm.showOk" ng-disabled="(vm.data.val != vm.totSeq) && false" ng-click="vm.ok()">Ok</button>
-        <p class="msg pull-right" ng-show="vm.msg">{{vm.msg}}</p>
-    </nav>
+         </div>
+      </div>
+       
+      <nav>
+         <button class="btn btn-default pull-right" ng-show="vm.showOk" ng-disabled="(vm.data.val != vm.totSeq) && false" ng-click="vm.ok()">Ok</button>
+         <p class="msg pull-right" ng-show="vm.msg">{{vm.msg}}</p>
+      </nav>
 
-</form>
+   </form>
 
 </div>
-
-<style>
-    .itemInput {
-        margin: 0;
-        padding: 0;
-        border-width: 1px;
-        border-color: transparent;
-        border-radius: 4px;
-        width: 100%;
-        min-width: 90px;
-        background-color: #fff;
-    }
-    .itemInputEdit {
-        border-color: #ccc;
-    }
-</style>

@@ -105,6 +105,7 @@
       vm.edit = edit;
 
       vm.itemAdd = itemAdd;
+      vm.itemEdit = itemEdit;
       vm.itemDel = itemDel;
 
       vm.ok = ok;
@@ -144,7 +145,8 @@
 
          for (var key in vm.data.recList) {
             vm.data.recList[key].seq = Number(key)+1;
-            vm.data.recList[key].dtDueStr = $filter('date')(vm.data.recList[key].dtDue, vm.dateFormat, 'UTC');
+            vm.data.recList[key].dtDue = new Date(vm.data.recList[key].dtDue);
+            //vm.data.recList[key].dtDueStr = $filter('date')(vm.data.recList[key].dtDue, vm.dateFormat, 'UTC');
             vm.data.recList[key].valStr = $filter('number')(vm.data.recList[key].val, 2);
          }
       }
@@ -241,6 +243,11 @@
             val: vm.data.val - vm.totRec()
          });
          vm.calc();
+      }
+
+      function itemEdit(seq) {
+         if (vm.ro) return false;
+         vm.recEditSeq = seq;
       }
 
       function itemDel() {

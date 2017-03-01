@@ -1,0 +1,6 @@
+<div class="input-group input-group-sm input">
+   <input type="text" class="form-control input-item" uib-datepicker-popup="{{vm.format}}" ng-disabled="vm.disabled" ng-model="vm.dt" ng-model-options="{timezone: 'utc'}" is-open="popup.opened" datepicker-options="dateOptions" ng-required ng-class="{ invalid: !vm.isValid() }" close-text="Close" style="min-width: 85px"/>
+   <span class="input-group-btn">
+      <button type="button" class="btn btn-default" ng-class="{'input-invisible' : vm.disabled }" ng-click="open()" ng-disabled="vm.disabled"><i class="glyphicon glyphicon-calendar"></i></button>
+   </span>
+</div>
