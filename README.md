@@ -1,4 +1,4 @@
-# Prototype of Brazilian invoice simulator [under development]
+# Prototype of Brazilian invoice simulator
 
 This application simulates a simplified portfolio of Brazilian invoices and their generation of account receivables. Compliant with the local legal and banking environment, as well as interfaces easy and familiar for the personnel usually found in the finance department of local companies.
 
