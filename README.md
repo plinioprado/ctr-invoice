@@ -2,7 +2,7 @@
 
 This application simulates a simplified portfolio of Brazilian invoices and their generation of account receivables. Compliant with the local legal and banking environment, as well as interfaces easy and familiar for the personnel usually found in the finance department of local companies.
 
-It's also the core for a connection between business administration softwares and other financial controls.
+Its part of a set of public protypes intended to test and exchange information about technologies used in Finance internal controls for customers.
 
 ### Scope
 
@@ -31,9 +31,7 @@ Backend
 
 ### Next steps
 
-* Implement Gulp
-* Improvement in datepickers and tests 
-* Other expansions
+This application was originally intended to use Gulp. But it would require so many changes in its structure that it's better to use Gulp in a new finance control.
 
 ## Set up
 -----------
@@ -54,7 +52,7 @@ localhost:3000/api/install
 // This url will reset the original database at any time
 ```
 
-### Run the application
+### Still in the browser, run the application
 ```shell
 localhost:3000
 ```
