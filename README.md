@@ -4,7 +4,7 @@ This application simulates a simplified portfolio of Brazilian invoices and thei
 
 Its part of a set of public protypes intended to test and exchange information about technologies used in Finance internal controls for customers.
 
-### Scope
+## Scope
 
 The bilingual (Portuguese/English) application controls:
 
@@ -13,7 +13,7 @@ The bilingual (Portuguese/English) application controls:
 * Invoices
 * Config (language selected here)
 
-### Stack
+## Stack
 
 Frontend
 
@@ -30,7 +30,6 @@ Backend
 * MongoDb
 
 ## Set up
------------
 
 * If Mongodb not installed, install it
 
@@ -45,15 +44,15 @@ $ node index
 * Open browser and create default database
 ```shell
 localhost:3000/api/install
-// This url will reset the original database at any time
 ```
+This url will reset the original database at any time
 
 * Still in the browser, run the application
 ```shell
 localhost:3000
 ```
 
-### Configuration
+## Configuration
 In the file config.json:
 
 * serverPort, default: 3000
