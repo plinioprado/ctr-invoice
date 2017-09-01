@@ -1,0 +1,62 @@
+<div class="container">
+    
+   <h2>{{vm.txt[vm.lang].invoices}}</h2>
+
+   <form name="form" class="navbar-form">
+        
+      <uibdatepicker dt="vm.dt0" format="vm.dateFormat"></uibdatepicker>
+      <uibdatepicker dt="vm.dtn" format="vm.dateFormat"></uibdatepicker>
+  
+      <input class="form-control" type="text" size="20" placeholder="Search" ng-model="vm.searchText" ng-change="vm.calc()"> {{vm.txt[vm.lang].in}}
+      <select class="form-control" ng-model="vm.searchCol" ng-change=" vm.dataGet(); vm.calc()">
+         <option value="">{{vm.txt[vm.lang].all}}</option>
+         <option value="cod">Cod</option>
+         <option value="cpcod">Cnpj/Cpf</option>
+         <option value="cpname">{{vm.txt[vm.lang].customer}}</option>
+         <option value="dt">{{vm.txt[vm.lang].date}}</option>
+         <option value="val">{{vm.txt[vm.lang].value}}</option>
+      </select>
+
+      <div class="form-group pull-right">
+         <button class="btn btn-default" ng-click="vm.ins()">{{vm.txt[vm.lang].insert}}</button>
+      </div>
+
+   </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="10%" ng-click="vm.sortData('cod')">Doc <div ng-class="vm.sortGetClass('cod')"></th>
+                <th width="10%" ng-click="vm.sortData('cp.cod')">Cnpj/Cpf <div ng-class="vm.sortGetClass('cp.cod')"></th>
+                <th ng-click="vm.sortData('cp.name')">{{vm.txt[vm.lang].customer}} <div ng-class="vm.sortGetClass('cp.name')"></th>
+                <th width="1%" ng-click="vm.sortData('dt')">{{vm.txt[vm.lang].date}} <div ng-class="vm.sortGetClass('dt')"></th>
+                <th width="15%" ng-click="vm.sortData('val')">{{vm.txt[vm.lang].value}} <div ng-class="vm.sortGetClass('val')"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.list | filter:vm.search | orderBy:vm.sortCol:vm.reverseSort">
+                <td><a href="#!/recins/{{item.cod}}">{{item.cod}}</a></td>
+                <td>{{item.cp.cod}}</td>
+                <td>{{item.cp.name}}</td>
+                <td>{{item.dt | date: vm.dateFormat : 'UTC' }}</td>
+                <td class="val">{{item.val | number:2 }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">Total</td>
+                <td class="val">{{vm.totVal() | number:2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="msg" ng-show="vm.msg">{{vm.msg}}</p>
+
+    <style>
+        .table tbody tr td:nth-child(1) {
+            white-space: nowrap;
+        }
+        .table tbody tr td:nth-child(5) {
+            text-align: right;
+        }
+    </style>
+</div>
+

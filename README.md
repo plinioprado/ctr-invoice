@@ -29,30 +29,26 @@ Backend
 * Mongoose
 * MongoDb
 
-### Next steps
-
-This application was originally intended to use Gulp. But it would require so many changes in its structure that it's better to use Gulp in a new finance control.
-
 ## Set up
 -----------
 
-### If Mongodb not installed, install it
+* If Mongodb not installed, install it
 
-### Download files to the working folder
+* Download files to the working folder
 
-### Install the application and run Node
+* Install the application and run Node
 ```shell
 $ npm install
 $ node index
 ```
 
-### Open browser and create default database
+* Open browser and create default database
 ```shell
 localhost:3000/api/install
 // This url will reset the original database at any time
 ```
 
-### Still in the browser, run the application
+* Still in the browser, run the application
 ```shell
 localhost:3000
 ```
@@ -65,14 +61,10 @@ In the file config.json:
 * token, defult '123321'
 
 ## Tests
------------
+
 * Available in Jasmine/Karma
 
-## Contribution guidelines
------------
-* We welcome any suggestion
+## Contribution Who do I talk to? ##
 
-## Who do I talk to? ##
-
-* Plinio Prado
+* Any suggestion or info request to:
    plinio.prado@immaginare.com.br

@@ -39,14 +39,14 @@ app.use(cookieParser());
 app.use(function (req, res, next){
 
    var p = url.parse(req.path).pathname;
-   if (p.substr(0,5) == '/api/' && p != '/api/login' && req.cookies.token != cn.token) {
+   if (p.substr(0,5) == '/api/' && p != '/api/login' && p != '/api/install' && req.cookies.token != cn.token) {
       res.status(400).json('no token');  
    } else {
       next();      
    }
 });
 
-app.use(express.static(__dirname + '/client'));
+app.use(express.static('./public'));
 app.use('/api/cnf', cnf);
 app.use('/api/login', login);
 app.use('/api/recins', recins);
