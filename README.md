@@ -1,8 +1,8 @@
-# Brazilian invoice simulator in mean stack
+# Brazilian invoice simulator in MEAN stack
 
 This application simulates a simplified portfolio of Brazilian invoices and their generation of account receivables. Compliant with the local legal and banking environment, as well as interfaces easy and familiar for the personnel usually found in the finance department of local companies.
 
-Its part of a set of public protypes intended to test and exchange information about technologies used in Finance internal controls for customers.
+Developed in Mongo Express Angular Node and it's part of a group of public demos anr templates used in private projects of Finance internal controls for customers.
 
 ## Scope
 
