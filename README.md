@@ -1,4 +1,4 @@
-# Prototype of Brazilian invoice simulator
+# Brazilian invoice simulator in mean stack
 
 This application simulates a simplified portfolio of Brazilian invoices and their generation of account receivables. Compliant with the local legal and banking environment, as well as interfaces easy and familiar for the personnel usually found in the finance department of local companies.
 
